@@ -1,0 +1,44 @@
+codon_table = {
+    "UUU":"F","UUC":"F","UUA":"L","UUG":"L",
+    "UCU":"S","UCC":"S","UCA":"S","UCG":"S",
+    "UAU":"Y","UAC":"Y","UAA":"STOP","UAG":"STOP",
+    "UGU":"C","UGC":"C","UGA":"STOP","UGG":"W",
+    "CUU":"L","CUC":"L","CUA":"L","CUG":"L",
+    "CCU":"P","CCC":"P","CCA":"P","CCG":"P",
+    "CAU":"H","CAC":"H","CAA":"Q","CAG":"Q",
+    "CGU":"R","CGC":"R","CGA":"R","CGG":"R",
+    "AUU":"I","AUC":"I","AUA":"I","AUG":"M",
+    "ACU":"T","ACC":"T","ACA":"T","ACG":"T",
+    "AAU":"N","AAC":"N","AAA":"K","AAG":"K",
+    "AGU":"S","AGC":"S","AGA":"R","AGG":"R",
+    "GUU":"V","GUC":"V","GUA":"V","GUG":"V",
+    "GCU":"A","GCC":"A","GCA":"A","GCG":"A",
+    "GAU":"D","GAC":"D","GAA":"E","GAG":"E",
+    "GGU":"G","GGC":"G","GGA":"G","GGG":"G"
+}
+protein_1 = ""
+protein_2 = ""
+mrna1 = input()
+mrna2 = input()
+for i in range(0,len(mrna1),3):
+    queue1 = [mrna1[i:i+3]]
+    key = queue1[0]
+    if codon_table[key] == "STOP":
+        queue1 = queue1
+    else:
+        protein_1 += codon_table[key]
+for i in range(0,len(mrna2),3):
+    queue2 = [mrna2[i:i+3]]
+    key = queue2[0]
+    if codon_table[key] == "STOP":
+        queue2 = queue2
+    else:
+        protein_2 += codon_table[key]
+if protein_1 == protein_2:
+    print("False")
+else:
+    print("True")
+#print(protein_1)
+#print(protein_2)
+# a problem easy to solve but difficult to get full marks.
+# just pay attetion to "STOP" and the sequence number.
