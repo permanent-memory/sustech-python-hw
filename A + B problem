@@ -1,0 +1,7 @@
+t = int(input())
+output = ""
+for _ in range(t):
+    a,b = map(int,input().split())
+    output = output + str(a+b) + "\n"
+print(output, end = "")
+# think that it may be a little difficult for a freshman who begins to learn Python...
