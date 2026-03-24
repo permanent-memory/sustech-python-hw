@@ -1,0 +1,19 @@
+code = []
+code += input().split()
+letter = input()
+queue = []
+d = {}
+p = {}
+for i in range(0, len(letter), 1):
+    queue += letter[i]
+    a = code[i]
+    b = queue[i]
+    d[a] = b
+    p[b] = a
+#print(d,p)
+if len(d.values()) != len(set(d.values())) or len(d) != len(p):
+    print("False")
+else:
+    print("True")
+# need to figure out the difference between "len(set(d.values))" and "len(d)" and "len(d.values)".
+# pay attention to difference between "keys" and "values".
