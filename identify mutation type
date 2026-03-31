@@ -1,0 +1,70 @@
+codon_table = {
+    "UUU": "Phe", "UUC": "Phe",
+    "UUA": "Leu", "UUG": "Leu",
+    "CUU": "Leu", "CUC": "Leu", "CUA": "Leu", "CUG": "Leu",
+
+    "AUU": "Ile", "AUC": "Ile", "AUA": "Ile",
+    "AUG": "Met",
+
+    "GUU": "Val", "GUC": "Val", "GUA": "Val", "GUG": "Val",
+
+    "UCU": "Ser", "UCC": "Ser", "UCA": "Ser", "UCG": "Ser",
+    "AGU": "Ser", "AGC": "Ser",
+
+    "CCU": "Pro", "CCC": "Pro", "CCA": "Pro", "CCG": "Pro",
+
+    "ACU": "Thr", "ACC": "Thr", "ACA": "Thr", "ACG": "Thr",
+
+    "GCU": "Ala", "GCC": "Ala", "GCA": "Ala", "GCG": "Ala",
+
+    "UAU": "Tyr", "UAC": "Tyr",
+    "UAA": "Stop", "UAG": "Stop",
+
+    "CAU": "His", "CAC": "His",
+    "CAA": "Gln", "CAG": "Gln",
+
+    "AAU": "Asn", "AAC": "Asn",
+    "AAA": "Lys", "AAG": "Lys",
+
+    "GAU": "Asp", "GAC": "Asp",
+    "GAA": "Glu", "GAG": "Glu",
+
+    "UGU": "Cys", "UGC": "Cys",
+    "UGA": "Stop",
+    "UGG": "Trp",
+
+    "CGU": "Arg", "CGC": "Arg", "CGA": "Arg", "CGG": "Arg",
+    "AGA": "Arg", "AGG": "Arg",
+
+    "GGU": "Gly", "GGC": "Gly", "GGA": "Gly", "GGG": "Gly"
+}
+mrna1 = input()
+mrna2 = input()
+if len(mrna1) == len(mrna2):
+    print("Mutation Type: Substitution")
+elif len(mrna1) > len(mrna2):
+    print("Mutation Type: Deletion")
+else:
+    print("Mutation Type: Insertion")
+a = list(mrna1)
+b = list(mrna2)
+i = 0
+while i < len(mrna1):
+    if a[i] != b[i]:
+        print(f"Position: {i}")
+        break
+    i += 1
+import math
+point = math.floor(i / 3)
+diff1 = mrna1[point * 3: point * 3 + 3]
+diff2 = mrna2[point * 3: point * 3 + 3]
+print(f"Amino Acid Change: {codon_table[diff1]} -> {codon_table[diff2]}")
+if codon_table[diff2] == "Stop":
+    print("Effect: Nonsense")
+elif codon_table[diff1] == codon_table[diff2] and codon_table[diff2] != "Stop":
+    print("Effect: Synonymous")
+elif codon_table[diff1] != codon_table[diff2] and codon_table[diff2] != "Stop":
+    print("Effect: Missense")
+
+#look difficult but easy to answer
+#just take care of your " " in the output, !a really cunning point!
