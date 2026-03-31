@@ -1,0 +1,14 @@
+num = int(input())
+num_1 = int((num + 1) / 2)
+num_2 = int((num - 1) / 2)
+i = 0
+j = 1
+t = " "
+k = "*"
+while i < num_1:
+    print( t * (num_2 - i), k * j, t * (num_2 - i), sep = "")
+    i += 1
+    j += 2
+#dk y they noted that "The ' ' to the right of each line * is necessary
+#it was just a misleading.
+#but honestly, its an easy and typical problem
