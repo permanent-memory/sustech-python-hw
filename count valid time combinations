@@ -1,0 +1,29 @@
+time = input()
+num = list(time)
+count = 1
+#print(type(hh))
+#hh:?X and X?
+#print(num)
+if num[1] != "?" and num[0] == "?":
+    if num[1] > "4":
+        count = count * 2
+    else:
+        count = count * 3
+elif num[1] == "?" and num[0] != "?":
+    if num[0] == "2":
+        count = count * 4
+    else:
+        count = count * 10
+elif num[1] == "?" and num[0] == "?":
+    count = count * 24
+
+#mm:?X and X?
+if num[3] != "?" and num[4] == "?":
+        count = count * 10
+elif num[3] == "?" and num[4] != "?":
+        count = count * 6
+elif num[3] == "?" and num[4] == "?":
+    count = count * 60
+print(count)
+#boring problem
+#just use many if
