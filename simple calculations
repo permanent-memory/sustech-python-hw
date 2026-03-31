@@ -1,0 +1,20 @@
+cal = input()
+if "+" in cal:
+    inner = cal.split("+")
+    op = "+"
+elif "-" in cal:
+    inner = cal.split("-")
+    op = "-"
+else:
+    inner = cal.split("*")
+    op = "*"
+a = int(inner[0])
+b = int(inner[1])
+if op == "+":
+    print(a + b)
+elif op == "-":
+    print(a - b)
+else: 
+    print(a * b)
+#interesting that idk how to calculate a longer calculations
+#easy problem for freshmen
