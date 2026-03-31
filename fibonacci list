@@ -1,0 +1,12 @@
+n = int(input())
+f = [0 , 0]
+f[0] = int(input())
+f[1] = int(input())
+i = 2
+while i <= n:
+    f = f + [0]
+    f[i] = f[i - 1] + f[i - 2]
+    i += 1
+print(f[n]
+#typical and easy problem
+#just take care that you need to add a new element every time you calculate a new number
