@@ -1,0 +1,81 @@
+from collections import deque
+import sys
+
+def solve_maze():
+    # Read the filename from user input
+    file_name = input()
+    
+    grid = []
+    try:
+        # Open and process the file
+        with open(file_name, 'r') as file:
+            for line in file:
+                line = line.strip()
+                if line:  # Ignore any empty lines
+                    grid.append(list(line))
+    except FileNotFoundError:
+        print("File not found.")
+        return
+
+    # Handle edge case for an empty file
+    if not grid:
+        print("-1")
+        return
+
+    rows = len(grid)
+    cols = len(grid[0])
+    start = None
+    target = None
+
+    # Locate the starting ('S') and target ('T') coordinates
+    for r in range(rows):
+        for c in range(cols):
+            if grid[r][c] == 'S':
+                start = (r, c)
+            elif grid[r][c] == 'T':
+                target = (r, c)
+
+    # If S or T is missing, a path is impossible
+    if not start or not target:
+        print("-1")
+        return
+
+    # BFS Setup: Queue stores tuples of (row, col, current_distance)
+    queue = deque([(start[0], start[1], 0)])
+    
+    # Visited set keeps track of explored cells to prevent infinite loops
+    visited = set()
+    visited.add((start[0], start[1]))
+
+    # Defines the 4 allowed movements: Down, Up, Right, Left
+    directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+
+    # Execute BFS
+    while queue:
+        r, c, dist = queue.popleft()
+
+        # If the target is reached, print the distance and exit
+        if (r, c) == target:
+            print(dist)
+            return
+
+        # Explore all valid neighboring cells
+        for dr, dc in directions:
+            nr = r + dr
+            nc = c + dc
+
+            # Check if the neighbor is within bounds, not a wall, and not visited
+            if 0 <= nr < rows and 0 <= nc < cols:
+                if grid[nr][nc] != '#' and (nr, nc) not in visited:
+                    visited.add((nr, nc))
+                    queue.append((nr, nc, dist + 1))
+
+    # If the queue empties and 'T' was never reached
+    print("-1")
+
+if __name__ == "__main__":
+    solve_maze()
+
+#really difficult and complex question
+#I have to use ai to get the marks
+#the biggest problem is to solute the input and create the map
