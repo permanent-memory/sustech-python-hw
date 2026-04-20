@@ -1,0 +1,17 @@
+print("Section,Key,Value")
+path = input()
+nowsec = ""
+with open (path, "r") as file:
+    for lines in file:
+        lines = lines.strip()
+        if "[" in lines:
+            sec = lines.lstrip("[").rstrip("]")
+            nowsec = sec
+        
+        if "=" in lines:
+            line = lines.split("=", 1)
+            key = line[0]
+            value = line[1]
+            print(f"{nowsec},{key},{value}")
+  #dont be afraid of the csv form
+  #just do it
