@@ -1,0 +1,11 @@
+filename = input()
+with open(filename) as f:
+    linenum = f.read().splitlines()
+    for i in range(0, len(linenum)):
+        if i % 2 == 1:
+            code = linenum[i]
+            print(code[2:20])
+        else:
+            sign = linenum[i]
+            print(sign)
+#hard to understand but easy to get full marks
