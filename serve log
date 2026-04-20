@@ -1,0 +1,10 @@
+file_path = input()
+print("IP,Requests,Bytes")
+with open (file_path, "r") as file:
+    for i in file:
+        path = i.split()
+        IP = path[0]
+        byte = path[-1]
+        request = path[-2]
+        print(IP, request, byte, sep = ",")
+#simple question. pay attention to the sequence.
