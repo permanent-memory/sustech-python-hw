@@ -1,0 +1,24 @@
+import json
+i = int(input())
+keys = []
+values = []
+allvalues = []
+while i > 0:
+    json_str = input()
+    dic = json.loads(json_str)
+    keys = list(dic.keys())
+    for key in keys:
+        key = key.strip()
+    values = list(dic.values())
+    for ele in values:
+        if type(ele) == str:
+            if "[" in ele:
+                ele = ele.replace("[","'").replace("]","'")
+    allvalues.append(values)
+    i -= 1
+
+print(str(keys).strip('[]').replace("'",""))
+for j in range(len(allvalues)):
+    print(*allvalues[j], sep=", ")
+#same as the "config" question
+#simple
